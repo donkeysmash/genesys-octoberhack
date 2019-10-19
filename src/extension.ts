@@ -32,6 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
             throw new Error('cannot find activetexteditor');
         }
         const currentLanguage = textEditor.document.languageId;
+
     });
 
     context.subscriptions.push(mls);
