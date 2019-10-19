@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { TextEditor } from 'vscode';
+import { TextEditor, Selection, Range, TextDocument, TextEditorEdit } from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -33,6 +33,17 @@ export function activate(context: vscode.ExtensionContext) {
         }
         const currentLanguage = textEditor.document.languageId;
 
+        const selection: Selection = textEditor.selection;
+
+        const selectedRange: Range = new Range(selection.start, selection.end);
+        const currentDocument: TextDocument = textEditor.document;
+        const selectedText = currentDocument.getText(selectedRange);
+
+        console.log(currentLanguage + ' ' + selectedText);
+        //run long's function here
+        textEditor.edit((editBuilder: TextEditorEdit) => {
+            editBuilder.replace(selectedRange, "tim horton coffee is the best");
+        });
     });
 
     context.subscriptions.push(mls);
