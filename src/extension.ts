@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { TextEditor } from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -23,8 +24,14 @@ export function activate(context: vscode.ExtensionContext) {
     // context.subscriptions.push(disposable);
 
 
-    let mls = vscode.commands.registerCommand('extension.mls', () => {
-        console.log(vscode.env.language);
+    let mls = vscode.commands.registerCommand('extension.mls', async () => {
+        let textEditor: TextEditor;
+        if (vscode.window.activeTextEditor !== undefined) {
+            textEditor = vscode.window.activeTextEditor;
+        } else {
+            throw new Error('cannot find activetexteditor');
+        }
+        const currentLanguage = textEditor.document.languageId;
     });
 
     context.subscriptions.push(mls);
