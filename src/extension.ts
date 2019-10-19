@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { TextEditor, Selection, Range, TextDocument, TextEditorEdit } from 'vscode';
+import * as searchKnowledge from '../libs/searchKnowledge';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -39,10 +40,17 @@ export function activate(context: vscode.ExtensionContext) {
         const currentDocument: TextDocument = textEditor.document;
         const selectedText = currentDocument.getText(selectedRange);
 
-        console.log(currentLanguage + ' ' + selectedText);
+        console.log('language:' + currentLanguage + ', selected text:' + selectedText);
         //run long's function here
+        try {
+            const jsonResponse = await searchKnowledge.search();
+        } catch (error) {
+            console.log(JSON.stringify(error));
+        }
         textEditor.edit((editBuilder: TextEditorEdit) => {
-            editBuilder.replace(selectedRange, "tim horton coffee is the best");
+            if (selectedText.includes('concat')) {
+                editBuilder.replace(selectedRange, "string\.concat\(\)");
+            }
         });
     });
 

@@ -37,6 +37,8 @@
 		"mocha": "^6.1.4",
 		"typescript": "^3.3.1",
 		"tslint": "^5.12.1",
-		"vscode-test": "^1.2.0"
+		"vscode-test": "^1.2.0",
+		"request": "^2.88.0",
+		"request-promise": "^4.2.4"
 	}
 }
