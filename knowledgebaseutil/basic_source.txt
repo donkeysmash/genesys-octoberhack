@@ -1,0 +1,19 @@
+Museum	What is the most popular museum in Toronto?	Royal Ontario Museum	http://www.rom.on.ca	What is the best museum?;What is the biggest museum in Toronto?
+Museum	What is the most popular art gallery in Toronto?	Art Gallery of Ontario	http://www.ago.net	What is the best art gallery?;Where can I find the most number of arts?
+Museum	What is the best science museum in Toronto?	Ontario Science Centre	https://www.ontariosciencecentre.ca/	Where is the biggest science center in Toronto?;What is the best science fair?;What is the best science museum?
+Museum	Is there a zoo in Toronto?	Toronto Zoo	https://www.torontozoo.com	Where can I find some animals?;Is there a outdoor museum in Toronto?;What is the best museum that I can go with my children?
+Museum	Is there a museum related to sports?	Hockey Hall of Fame	http://www.hhof.com/index.htm	What is Hockey Hall of Fame?;What is the best sports museum?;What is the best sports museum in Toronto?
+Hotel	What are some luxurious hotels in Toronto?	Ritz Carlton Toronto	https://www.ritzcarlton.com/en/hotels/canada/toronto	What are some upscale hotels in Toronto?;What is the best hotel?;What is the most expensive hotel?
+Hotel	What are some trendy hotels in Toronto?	The Drake Hotel	https://www.thedrake.ca/thedrakehotel/	What is the trendiest hotel in Toronto?;What is the trendiest hotel?;What are some hipster hotels?;Is there a hipster nest?
+Hotel	Where can I get some spa experience?	Windsor Arms Hotel	https://windsorarmshotel.com/	Where can I find a spa?;Where can I wash myself?;Where can I get some massage?;What are some hotels with a spa?
+Shopping	What is the best mall in Toronto?	Eaton Centre	https://www.cfshops.com/toronto-eaton-centre.html	Where can I buy winter jackets?;Where can I go for shopping?;What are some malls to visit?
+Restaurants	Where can I find some good italian food?	Teroni	http://www.terroni.ca/	What are some good Italian restaurants?;Where can I find a good pizza?;Where can I find good pastas?;Italian Cuisine;Italian Food
+Restaurants	Where can I find some good indian food?	Aroma	http://www.dineataroma.com/lunch.htm	What are some good inidan restaurants?;Where can I find a good curry?;Where can I get some curry?;Indian cuisine;Indian food
+Restaurants	Where can I find some good French food?	La Maquette	http://www.lamaquette.com/home.php	What are some good french restaurants?;Where can I find good croissants?;French cuisine;French food
+Weather	Can you tell me the weather?	Weather	https://www.google.com/search?q=toronto+weather&oq=toronto+weather	What is the weather in Toronto?
+Sports	Is there a basketball team in Toronto?	Raptors	https://www.nba.com/raptors/	Who won the NBA championship?;Whatis the strongest basketball team in the world?;Does Toronto have a basketball team?
+Sports	Is there a baseball team in Toronto?	Bluejays	https://www.mlb.com/bluejays	Whatis the strongest baseball team in Canada?;Does Toronto have a baseball team?
+Sports	Where does Raptors play?	Scotiabank Arena	https://www.scotiabankarena.com/	Is there a basketball arena?
+Sports	Where does Bluejays play?	Rogers Centre	https://www.mlb.com/bluejays/ballpark	Is there a baseball stadium?
+Attraction	What is the landmark of Toronto?	CN Tower	https://www.cntower.ca/intro.html	What is the tallest building in Toronto?;What is the most famous landmark?;Tallest tower;Famous landmark
+Attraction	Is there a amusement park in Toronto?	Wonderland	https://www.canadaswonderland.com	Where can I find rollercoatsers?;Is there a waterpark?;Amusement park
