@@ -4,6 +4,7 @@ const request = require('request');
 const constants = require('./constants');
 
 
+
 function parseText(path) {
     const txt = fs.readFileSync(path, {encoding: 'utf-8'});
     const lines = txt.split('------------');

@@ -10,14 +10,19 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.mls"
+        "onCommand:extension.mls",
+        "onCommand:extension.mlsUpdate"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "extension.mls",
-				"title": "My Little Secret"
+				"title": "My Little Secret - Query"
+			},
+			{
+				"command": "extension.mlsUpdate",
+				"title": "My Little Secret - Update Document"
 			}
 		]
 	},

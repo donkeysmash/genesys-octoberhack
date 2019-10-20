@@ -2,6 +2,29 @@ import { window } from 'vscode';
 import * as rp from 'request-promise';
 const constants: any = require('../knowledgebaseutil/constants');
 
+export async function updateKnowledge(selected: string, langCode: string): Promise<any> {
+    const options = {
+        headers: {
+            Accept: '*/*',
+            token: constants.token,
+            organizationid: constants.orgId,
+            'Content-Type': 'application/json'
+        },
+        body: {
+            type: 'faq',
+            faq: {
+                question: "question",
+                answer: selected
+            },
+            externalUrl: `https://stackoverflow.com/search?q=${selected}`
+        },
+        json: true
+    }
+    const kbid = langCode === 'python' ? constants.pythonKbid : constants.jsKbid;
+    const url = `${constants.baseUrl}/knowledgebases/${kbid}/languages/${constants.langCode}/documents/`
+    const {results} = await rp.post(url, options);
+    return results || '';
+}
 /**
  * Shows an input box using window.showInputBox().
  */
@@ -70,8 +93,9 @@ Promise<{ code: string, answer: string, externalUrl: string }>
     const url = `${constants.baseUrl}/knowledgebases/${kbid}/search`
     const {results} = await rp.post(url, options);
     if (results.length > 0) {
+        constants.updatePrevious(results[0]);
         const rawAnswer: string = results[0].faq.answer;
-        const externalUrl = results[0].externalUrl;
+        const externalUrl = results[0].externalUrl.replace("\n", "");
         const [junkCodeWithJunk, answerWithJunk] = rawAnswer.split('</code>');
         const [preAnswerWithJunk, codeWithJunk ] = junkCodeWithJunk.split('<code>');
         const code = codeWithJunk.replace('<code>', '').replace('"', '').replace(/\<newline\>/g, '\n').replace(/\"\"/g, '"').replace(/;/g, ';\n').replace(/{/g, '{\n').replace(/}/g, '}\n');
@@ -99,21 +123,21 @@ Promise<{ code: string, answer: string, externalUrl: string }>
 
 async function mockAnswer(question: string, languageCode: string): Promise<{ code: string, answer: string, externalUrl: string }> {
     const code = `
-const request = require('request')
+            const request = require('request')
 
-request.post('https://flaviocopes.com/todos', {
-  json: {
-    todo: 'Buy the milk'
-  }
-}, (error, res, body) => {
-  if (error) {
-    console.error(error);
-    return;
-  }
-  console.log(\`statusCode: \$\{res.statusCode}\`);
-  console.log(body);
-});
-`
+            request.post('https://flaviocopes.com/todos', {
+            json: {
+                todo: 'Buy the milk'
+            }
+            }, (error, res, body) => {
+            if (error) {
+                console.error(error);
+                return;
+            }
+            console.log(\`statusCode: \$\{res.statusCode}\`);
+            console.log(body);
+            });
+    `
 
     const answer = `There are many ways to perform an HTTP POST request in Node, depending on the abstraction level you want to use. The simplest way to perform an HTTP request using Node is to use the Request library`;
 
