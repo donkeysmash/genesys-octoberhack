@@ -1,25 +1,15 @@
 import { window } from 'vscode';
-
-/**
- * Shows a pick list using window.showQuickPick().
- */
-export async function showQuickPick() {
-	let i = 0;
-	const result = await window.showQuickPick(['eins', 'zwei', 'drei'], {
-		placeHolder: 'eins, zwei or drei',
-		onDidSelectItem: item => window.showInformationMessage(`Focus ${++i}: ${item}`)
-	});
-	window.showInformationMessage(`Got: ${result}`);
-}
+import * as rp from 'request-promise';
+const constants: any = require('../knowledgebaseutil/constants');
 
 /**
  * Shows an input box using window.showInputBox().
  */
 export async function showInputBox(selected: string): Promise<string> {
-	const result = await window.showInputBox({
-		value: selected,
-		valueSelection: [0, selected.length],
-		placeHolder: 'Enter your question'
+    const result = await window.showInputBox({
+        value: selected,
+        valueSelection: [0, selected.length],
+        placeHolder: 'Enter your question'
     });
 
     return result || '';
@@ -27,12 +17,12 @@ export async function showInputBox(selected: string): Promise<string> {
 
 export async function showResultBox(question: string, languageCode: string): Promise<{ selectedGoogleGod: boolean, contents: string }> {
 
-    const { code, answer, externalUrl } = await mockAnswer(question, languageCode);
+    const { code, answer, externalUrl } = await getAnswer(question, languageCode);
     let result: { selectedGoogleGod: boolean, contents: string } = {
         selectedGoogleGod: false,
         contents: 'nothing was here'
     };
-    await window.showInformationMessage(answer, {modal: false});
+    await window.showInformationMessage(answer, { modal: true });
     await window.showQuickPick(['code snippet', 'Help me Google god'], {
         onDidSelectItem: item => {
             if (item === 'code snippet') {
@@ -46,8 +36,36 @@ export async function showResultBox(question: string, languageCode: string): Pro
     });
 
     return result;
-
 }
+
+
+async function getAnswer(question: string, langCode: string): Promise<any>
+//Promise<{ code: string, answer: string, externalUrl: string }>
+{
+    const options = {
+        headers: {
+            Accept: '*/*',
+            token: constants.token,
+            organizationid: constants.orgId,
+            'Content-Type': 'application/json'
+        },
+        body: {
+            query: question,
+            pageSize: 5,
+            pageNumber: 1,
+            sortOrder: 'string',
+            sortBy: 'string',
+            languageCode: 'en-US',
+            documentType: 'Faq'
+        },
+        json: true
+    }
+    const kbid = langCode === 'python' ? constants.pythonKbid : constants.jsKbid;
+    const url = `${constants.baseUrl}/knowledgebase/${kbid}/search`
+    const result = await rp.post(url, options);
+    return;
+}
+
 
 async function mockAnswer(question: string, languageCode: string): Promise<{ code: string, answer: string, externalUrl: string }> {
     const code = `

@@ -1,0 +1,221 @@
+{
+    "entities": [
+        {
+            "id": "4b3c5072-ade7-450d-ad0a-6cdd9eaa6090",
+            "type": "faq",
+            "languageCode": "en-US",
+            "article": null,
+            "faq": {
+                "question": "What is the javascript version of sleep ?",
+                "answer": "The infamous sleep, or delay, function within any language is much debated. Some will say that there should always be a signal or callback to fire a given functionality, others will argue that sometimes an arbitrary moment of delay is useful. I say that to each their own and one rule can never dictate anything in this industry.Writing a sleep function is simple and made even more usable with JavaScript Promises:<code>function sleep (time) {return new Promise((resolve) => setTimeout(resolve, time));}sleep(500).then(() => {// Do something after the sleep!});</code>",
+                "alternatives": [
+                    "how to wait in javascript?",
+                    "how to pause execution in javascript?"
+                ]
+            },
+            "categories": [],
+            "knowledgeBase": {
+                "id": "1d761b87-a4b3-466d-a36f-0c96c45afacb",
+                "name": "Javascript FAQ",
+                "description": "Everything you need to know about javascript",
+                "coreLanguage": "en-US",
+                "dateCreated": "2019-10-20T07:58:55.479Z",
+                "dateModified": "2019-10-20T07:58:55.479Z",
+                "selfUri": null
+            },
+            "externalUrl": "https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep\n",
+            "selfUri": null,
+            "dateCreated": "2019-10-20T07:59:38.361Z",
+            "dateModified": "2019-10-20T07:59:38.361Z"
+        },
+        {
+            "id": "fc2b71d8-a099-402c-a4bf-184dd5fa78f7",
+            "type": "faq",
+            "languageCode": "en-US",
+            "article": null,
+            "faq": {
+                "question": "How can I loop through an array in JavaScript",
+                "answer": "The ES5 spec. introduced a lot of very helpful array methods, one of them, the Array.prototype.forEach and it gives us a very short way to iterate over an array:<code>const array = [\"one\", \"two\", \"three\"]array.forEach(function (item, index) {console.log(item, index);});</code>",
+                "alternatives": [
+                    "How to do for loop in javascript?"
+                ]
+            },
+            "categories": [],
+            "knowledgeBase": {
+                "id": "1d761b87-a4b3-466d-a36f-0c96c45afacb",
+                "name": "Javascript FAQ",
+                "description": "Everything you need to know about javascript",
+                "coreLanguage": "en-US",
+                "dateCreated": "2019-10-20T07:58:55.479Z",
+                "dateModified": "2019-10-20T07:58:55.479Z",
+                "selfUri": null
+            },
+            "externalUrl": "https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript\n",
+            "selfUri": null,
+            "dateCreated": "2019-10-20T07:59:38.394Z",
+            "dateModified": "2019-10-20T07:59:38.394Z"
+        },
+        {
+            "id": "fd26d569-365f-40c0-8144-1908438355bc",
+            "type": "faq",
+            "languageCode": "en-US",
+            "article": null,
+            "faq": {
+                "question": "How do I remove a particular element from an array in JavaScript?",
+                "answer": "Find the index of the array element you want to remove, and then remove that index with splice.The splice() method changes the contents of an array by removing existing elements and/or adding new elements.<code>var array = [2, 5, 9];console.log(array);var index = array.indexOf(5);if (index > -1) {array.splice(index, 1);}console.log(array);</code>The second parameter of splice is the number of elements to remove. Note that splice modifies the array in place and returns a new array containing the elements that have been removed.",
+                "alternatives": [
+                    "How to delete an element from an array in JavaScript?",
+                    "Do you use splice or slice in javascript to remove an element in an array?"
+                ]
+            },
+            "categories": [],
+            "knowledgeBase": {
+                "id": "1d761b87-a4b3-466d-a36f-0c96c45afacb",
+                "name": "Javascript FAQ",
+                "description": "Everything you need to know about javascript",
+                "coreLanguage": "en-US",
+                "dateCreated": "2019-10-20T07:58:55.479Z",
+                "dateModified": "2019-10-20T07:58:55.479Z",
+                "selfUri": null
+            },
+            "externalUrl": "https://stackoverflow.com/questions/5767325/how-do-i-remove-a-particular-element-from-an-array-in-javascript\n",
+            "selfUri": null,
+            "dateCreated": "2019-10-20T07:59:38.439Z",
+            "dateModified": "2019-10-20T07:59:38.439Z"
+        },
+        {
+            "id": "6c052d70-0c49-4da9-ac4e-43fb87e5ddc9",
+            "type": "faq",
+            "languageCode": "en-US",
+            "article": null,
+            "faq": {
+                "question": "How to determine equality for two JavaScript objects?",
+                "answer": "Why reinvent the wheel? Give Lodash a try. It has a number of must-have functions such as isEqual().<code>const _ = require('lodash');_.isEqual(object, other);</code>It will brute force check each key value - just like the other examples on this page - using ECMAScript 5 and native optimizations if they're available in the browser.Note: Previously this answer recommended Underscore.js, but lodash has done a better job of getting bugs fixed and addressing issues with consistency.",
+                "alternatives": [
+                    "Check if two objects are equal in javascripts"
+                ]
+            },
+            "categories": [],
+            "knowledgeBase": {
+                "id": "1d761b87-a4b3-466d-a36f-0c96c45afacb",
+                "name": "Javascript FAQ",
+                "description": "Everything you need to know about javascript",
+                "coreLanguage": "en-US",
+                "dateCreated": "2019-10-20T07:58:55.479Z",
+                "dateModified": "2019-10-20T07:58:55.479Z",
+                "selfUri": null
+            },
+            "externalUrl": "https://stackoverflow.com/questions/201183/how-to-determine-equality-for-two-javascript-objects\n",
+            "selfUri": null,
+            "dateCreated": "2019-10-20T07:59:38.477Z",
+            "dateModified": "2019-10-20T07:59:38.477Z"
+        },
+        {
+            "id": "efe2918d-e26c-42a3-82e5-0b3eb7210d30",
+            "type": "faq",
+            "languageCode": "en-US",
+            "article": null,
+            "faq": {
+                "question": "How can I get all unique values in a JavaScript array?",
+                "answer": "With JavaScript 1.6 / ECMAScript 5 you can use the native filter method of an Array in the following way to get an array with unique values:<code>function onlyUnique(value, index, self) {return self.indexOf(value) === index;}var a = ['a', 1, 'a', 2, '1'];var unique = a.filter( onlyUnique ); </code>The native method filter will loop through the array and leave only those entries that pass the given callback function onlyUnique.onlyUnique checks, if the given value is the first occurring. If not, it must be a duplicate and will not be copied.This solution works without any extra library like jQuery or prototype.js.It works for arrays with mixed value types too.",
+                "alternatives": [
+                    "remove duplicate value in javascript array?"
+                ]
+            },
+            "categories": [],
+            "knowledgeBase": {
+                "id": "1d761b87-a4b3-466d-a36f-0c96c45afacb",
+                "name": "Javascript FAQ",
+                "description": "Everything you need to know about javascript",
+                "coreLanguage": "en-US",
+                "dateCreated": "2019-10-20T07:58:55.479Z",
+                "dateModified": "2019-10-20T07:58:55.479Z",
+                "selfUri": null
+            },
+            "externalUrl": "https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates\n",
+            "selfUri": null,
+            "dateCreated": "2019-10-20T07:59:38.508Z",
+            "dateModified": "2019-10-20T07:59:38.508Z"
+        },
+        {
+            "id": "f69d4da8-ff99-44cb-93f7-30779771c50f",
+            "type": "faq",
+            "languageCode": "en-US",
+            "article": null,
+            "faq": {
+                "question": "How can I to merge an array of arrays?",
+                "answer": "You can use concat to merge arrays:<code>var arrays = [[\"$6\"],[\"$12\"],[\"$25\"],[\"$25\"],[\"$18\"],[\"$22\"],[\"$10\"]];var merged = [].concat.apply([], arrays);</code>There is also an experimental Array.prototype.flat() method (not yet part of the ECMAScript standard) which you could use to flatten the arrays, although it is only available in Node.js starting with version 11, and not at all in Edge.",
+                "alternatives": [
+                    "how to flatten an array of arrays?"
+                ]
+            },
+            "categories": [],
+            "knowledgeBase": {
+                "id": "1d761b87-a4b3-466d-a36f-0c96c45afacb",
+                "name": "Javascript FAQ",
+                "description": "Everything you need to know about javascript",
+                "coreLanguage": "en-US",
+                "dateCreated": "2019-10-20T07:58:55.479Z",
+                "dateModified": "2019-10-20T07:58:55.479Z",
+                "selfUri": null
+            },
+            "externalUrl": "https://stackoverflow.com/questions/10865025/merge-flatten-an-array-of-arrays\n",
+            "selfUri": null,
+            "dateCreated": "2019-10-20T07:59:38.544Z",
+            "dateModified": "2019-10-20T07:59:38.544Z"
+        },
+        {
+            "id": "76578fc6-242f-4f2d-9a8a-48cecdd5acbf",
+            "type": "faq",
+            "languageCode": "en-US",
+            "article": null,
+            "faq": {
+                "question": "How to safely turn a JSON string into an object?",
+                "answer": "JSON.parse(jsonString) is a pure JavaScript approach so long as you can guarantee a reasonably modern browser.",
+                "alternatives": [
+                    "convert a string into a JSON object?"
+                ]
+            },
+            "categories": [],
+            "knowledgeBase": {
+                "id": "1d761b87-a4b3-466d-a36f-0c96c45afacb",
+                "name": "Javascript FAQ",
+                "description": "Everything you need to know about javascript",
+                "coreLanguage": "en-US",
+                "dateCreated": "2019-10-20T07:58:55.479Z",
+                "dateModified": "2019-10-20T07:58:55.479Z",
+                "selfUri": null
+            },
+            "externalUrl": "https://stackoverflow.com/questions/45015/safely-turning-a-json-string-into-an-object\n",
+            "selfUri": null,
+            "dateCreated": "2019-10-20T07:59:38.588Z",
+            "dateModified": "2019-10-20T07:59:38.588Z"
+        },
+        {
+            "id": "5559dc9f-459b-4327-8d36-7f957644c325",
+            "type": "faq",
+            "languageCode": "en-US",
+            "article": null,
+            "faq": {
+                "question": "How to find the length of a JavaScript object?",
+                "answer": "you can use Object.keys() so the above code just becomes. However, Objects can have symbolic properties which can not be returned via Object.key method. So the answer would be incomplete without mentioning them.Object.keys or Object.getOwnPropertyNames does not work for symbolic properties. To return them you need to use Object.getOwnPropertySymbols.<code>const propOwn = Object.getOwnPropertyNames(person);let propSymb = Object.getOwnPropertySymbols(person);</code>",
+                "alternatives": []
+            },
+            "categories": [],
+            "knowledgeBase": {
+                "id": "1d761b87-a4b3-466d-a36f-0c96c45afacb",
+                "name": "Javascript FAQ",
+                "description": "Everything you need to know about javascript",
+                "coreLanguage": "en-US",
+                "dateCreated": "2019-10-20T07:58:55.479Z",
+                "dateModified": "2019-10-20T07:58:55.479Z",
+                "selfUri": null
+            },
+            "externalUrl": "https://stackoverflow.com/questions/5223/length-of-a-javascript-object",
+            "selfUri": null,
+            "dateCreated": "2019-10-20T07:59:38.623Z",
+            "dateModified": "2019-10-20T07:59:38.623Z"
+        }
+    ],
+    "count": 8
+}

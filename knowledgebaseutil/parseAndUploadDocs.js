@@ -6,15 +6,14 @@ const constants = require('./constants');
 
 function parseText(path) {
     const txt = fs.readFileSync(path, {encoding: 'utf-8'});
-
-    const categoryMapping = JSON.parse(fs.readFileSync('./categoryMapping.json', {encoding: 'utf-8'}));
-
-    const lines = txt.split('\n');
-
+    const lines = txt.split('------------');
     const body = [];
     for (let line of lines) {
-        const [category, question, answer, externalUrl, alternatives] = line.split('\t');
-        const moreQuestions = alternatives.split(';');
+
+        let [question, alternatives, answer, externalUrl] = line.split('\t');
+        const moreQuestions = alternatives.split(';').filter(x => x.length > 0).map(x => x.trim());
+        question = question.trim();
+        answer = answer.replace(/\n/g, '<newline>');
 
         const documentToSend = {
             type: 'faq',
@@ -23,7 +22,6 @@ function parseText(path) {
                 answer,
                 alternatives: moreQuestions
             },
-            categories: [{ id: categoryMapping[category] }],
             externalUrl
         };
        body.push(documentToSend);
@@ -32,13 +30,29 @@ function parseText(path) {
     return body;
 }
 
-const body = parseText('./basic_source.txt');
-const options = {
+// let body = parseText('./python_source.txt');
+// let options = {
+//     method: 'PATCH',
+//     url: `${constants.baseUrl}/knowledgebases/${constants.pythonKbid}/languages/${constants.langCode}/documents`,
+//     headers: {
+//         token: constants.token,
+//         organizationid: constants.orgId,
+//         'Content-Type': 'application/json'
+//     },
+//     body,
+//     json: true
+// };
+
+// request(options, function (err, res, body) {
+//     if (err) throw new Error(err);
+//     fs.writeFileSync('./pythonDocUploadResult.json', JSON.stringify(body, null, 4));
+// });
+
+body = parseText('./javascript_source.txt');
+options = {
     method: 'PATCH',
-    url: `${constants.baseUrl}/knowledgebases/${constants.kbid}/languages/${constants.langCode}/documents`,
+    url: `${constants.baseUrl}/knowledgebases/${constants.jsKbid}/languages/${constants.langCode}/documents`,
     headers: {
-        'Postman-Token': 'e5eea134-7c1b-4fd2-a588-8e7ce99d4f61',
-        'cache-control': 'no-cache',
         token: constants.token,
         organizationid: constants.orgId,
         'Content-Type': 'application/json'
@@ -50,7 +64,7 @@ const options = {
 request(options, function (err, res, body) {
     if (err) throw new Error(err);
 
-    fs.writeFileSync('./uploadedDocuments.json', JSON.stringify(body, null, 4));
+    fs.writeFileSync('./javascriptDocUploadResult.json', JSON.stringify(body, null, 4));
 });
 
 

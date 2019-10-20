@@ -1,0 +1,37 @@
+Does Python have a ternary conditional operator?	ternary operator; Is there a ternary in Python?; ?: operator in python	<code>x = a if condition else b</code> First condition is evaluated, then exactly one of either a or b is evaluated and returned based on the Boolean value of condition. If condition evaluates to True, then a is evaluated and returned but b is ignored, or else when b is evaluated and returned but a is ignored. This allows short-circuiting because when condition is true only a is evaluated and b is not evaluated at all, but when condition is false only b is evaluated and a is not evaluated at all.	https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator
+------------
+How do I check whether a file exists without exceptions?	Does file exists?;check if file exists	"<code>from pathlib import Path
+
+my_file = Path(""/path/to/file"")
+if my_file.is_file():
+    # file exists</code> If the reason you're checking is so you can do something like if file_exists: open_it(), it's safer to use a try around the attempt to open it. Checking and then opening risks the file being deleted or moved or something between when you check and when you try to open it."	https://stackoverflow.com/questions/82831/how-do-i-check-whether-a-file-exists-without-exceptions
+------------
+How do you call an external command	Executing shell commands	"<code>import subprocess
+subprocess.run([""ls"", ""-l""])</code>Look at the subprocess module in the standard library. The advantage of subprocess vs. system is that it is more flexible (you can get the stdout, stderr, the ""real"" status code, better error handling, etc...)."	https://stackoverflow.com/questions/89228/calling-an-external-command-in-python
+------------
+How do I merge two dictionaries in a signle expression?	Merging dictionaries;combine dictionaries	<code>z = {**x, **y}</code>For dictionaries x and y, z becomes a shallowly merged dictionary with values from y replacing those from x	https://stackoverflow.com/questions/38987/how-do-i-merge-two-dictionaries-in-a-single-expression
+------------
+Does Python have a string contains substring method?	String includes substring; string.indexOf; string.contains	"<code>if ""blah"" not in somestring:
+    continue</code>You can use the in operator
+"	https://stackoverflow.com/questions/3437059/does-python-have-a-string-contains-substring-method
+------------
+How do I list all files in a directory	show files in a directory	"<code>from os import listdir
+from os.path import isfile, join
+onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]</code>os.listdir() will get you everything that's in a directory - files and directories.
+
+If you want just files, you could either filter this down using os.path"	https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory
+------------
+How do I sort a dictionary by value?	Sorting dictionary	"<code>import operator
+x = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
+sorted_x = sorted(x.items(), key=operator.itemgetter(1))</code>It is not possible to sort a dictionary, only to get a representation of a dictionary that is sorted. Dictionaries are inherently orderless, but other types, such as lists and tuples, are not. So you need an ordered data type to represent sorted values, which will be a list—probably a list of tuples."	https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
+------------
+How can I access the index in for loops?	index of for loops	"<code>for idx, val in enumerate(ints):
+    print(idx, val)</code>The better option is to use the built-in function enumerate(), available in both Python 2 and 3:"	https://stackoverflow.com/questions/522563/accessing-the-index-in-for-loops
+------------
+How do I check if a list is empty?	is list empty?	"<code>if not a:
+  print(""List is empty"")</code>Using the implicit booleanness of the empty list is quite pythonic."	https://stackoverflow.com/questions/53513/how-do-i-check-if-a-list-is-empty
+------------
+How do I access sub array	How do I use slice notation?;How to extract sub array;arr[a:b]	"<code>a[start:stop]  # items start through stop-1
+a[start:]      # items start through the rest of the array
+a[:stop]       # items from the beginning through stop-1
+a[:]           # a copy of the whole array</code>"	https://stackoverflow.com/questions/509211/understanding-slice-notation
