@@ -39,8 +39,8 @@ export async function showResultBox(question: string, languageCode: string): Pro
 }
 
 
-async function getAnswer(question: string, langCode: string): Promise<any>
-//Promise<{ code: string, answer: string, externalUrl: string }>
+async function getAnswer(question: string, langCode: string):
+Promise<{ code: string, answer: string, externalUrl: string }>
 {
     const options = {
         headers: {
@@ -61,9 +61,30 @@ async function getAnswer(question: string, langCode: string): Promise<any>
         json: true
     }
     const kbid = langCode === 'python' ? constants.pythonKbid : constants.jsKbid;
-    const url = `${constants.baseUrl}/knowledgebase/${kbid}/search`
-    const result = await rp.post(url, options);
-    return;
+    const url = `${constants.baseUrl}/knowledgebases/${kbid}/search`
+    const {results} = await rp.post(url, options);
+    if (results.length > 0) {
+        const rawAnswer: string = results[0].faq.answer;
+        const externalUrl = results[0].externalUrl;
+        const [codeWithJunk, answer] = rawAnswer.split('</code>');
+        const code = codeWithJunk.replace('<code>', '').replace('"', '').replace(/\<newline\>/g, '\n').replace(/\"\"/g, '"');
+
+        return {
+            externalUrl,
+            code,
+            answer
+        };
+    } else {
+        const replacedQuestion = `${question.trim()} in ${langCode}`.replace(/ /g, '+');
+        const externalUrl = `https://google.com/search?q=${replacedQuestion}`;
+        const answer = '';
+        const code = 'gotogooglegod';
+        return {
+            externalUrl,
+            code,
+            answer
+        };
+    }
 }
 
 
