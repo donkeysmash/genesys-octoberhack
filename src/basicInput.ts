@@ -22,8 +22,14 @@ export async function showResultBox(question: string, languageCode: string): Pro
         selectedGoogleGod: false,
         contents: 'nothing was here'
     };
-    await window.showInformationMessage(answer, { modal: true });
-    await window.showQuickPick(['code snippet', 'Help me Google god'], {
+    if (answer.length > 0) {
+        await window.showInformationMessage(answer, { modal: true });
+    }
+
+    let quickPick = ['code snippet', 'Help me Google god'];
+    if (code === 'gotogooglegod') quickPick = ['Help me Google god'];
+
+    await window.showQuickPick(quickPick, {
         onDidSelectItem: item => {
             if (item === 'code snippet') {
                 result.contents = code;
@@ -66,8 +72,11 @@ Promise<{ code: string, answer: string, externalUrl: string }>
     if (results.length > 0) {
         const rawAnswer: string = results[0].faq.answer;
         const externalUrl = results[0].externalUrl;
-        const [codeWithJunk, answer] = rawAnswer.split('</code>');
-        const code = codeWithJunk.replace('<code>', '').replace('"', '').replace(/\<newline\>/g, '\n').replace(/\"\"/g, '"');
+        const [junkCodeWithJunk, answerWithJunk] = rawAnswer.split('</code>');
+        const [preAnswerWithJunk, codeWithJunk ] = junkCodeWithJunk.split('<code>');
+        const code = codeWithJunk.replace('<code>', '').replace('"', '').replace(/\<newline\>/g, '\n').replace(/\"\"/g, '"').replace(/;/g, ';\n').replace(/{/g, '{\n').replace(/}/g, '}\n');
+        const preAnswer = preAnswerWithJunk.replace(/\"/g, '').replace(/\<newline\>/g, '\n');
+        const answer = preAnswer + answerWithJunk.replace(/\"/g, '').replace(/\<newline\>/g, '\n');
 
         return {
             externalUrl,
